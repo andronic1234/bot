@@ -255,7 +255,7 @@ const manifest_queue = async (message, args, queuePage, queueMessage) => {
         .setTimestamp()
         .setFooter(`page ${queuePage}`);
 
-        if (queue[queue.indexOf(message.guild.id)+1].length-((queuePage-1)*10) < 0) {tempMsg = await message.channel.send(`Page doesn\'t exist, last page is **${Math.ceil(queue[queue.indexOf(message.guild.id)+1].length/10)}**.`); tempMsg.delete(5000); return;}
+        if (queue[queue.indexOf(message.guild.id)+1].length-((queuePage-1)*10) < 0) {tempMsg = await message.channel.send(`Page doesn\'t exist, last page is **${Math.ceil(queue[queue.indexOf(message.guild.id)+1].length/10)}**.`); return;}
         for (let i = 0; i < (Math.min(queue[queue.indexOf(message.guild.id)+1].length-((queuePage-1)*10), 10)); i++) {
             queue_embed.addFields(
                 { name: `󠁤󠁡󠁢󠁡󠁢󠁹󠁨`, value: `**${i+1+((queuePage-1)*10)} ｜ \`${queue[queue.indexOf(message.guild.id)+1][i+((queuePage-1)*10)]}\`**`}
@@ -304,7 +304,9 @@ const manifest_queue = async (message, args, queuePage, queueMessage) => {
                     queuePage++;
                 }
                 else if (id === 'Previous') {
+                    if (queuePage != 1){
                     queuePage--;
+                    }
                 }
 
                 await ButtonInteraction.deferUpdate();
