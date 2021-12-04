@@ -9,6 +9,7 @@
   "author": "Andronic123#8281",
   "license": "ISC",
   "dependencies": {
+    "node": "^16.10.0",
     "@discordjs/opus": "^0.5.3",
     "@discordjs/voice": "^0.7.5",
     "discord-buttons": "^4.0.0",
