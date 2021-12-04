@@ -188,6 +188,7 @@ const stop_song = (message) => {
 
 const leave_voice = (message, connection) => {
     queue[queue.indexOf(message.guild.id)+1] = [];
+    if(!connection) return;
     connection.destroy();
 }
 
