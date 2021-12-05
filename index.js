@@ -2,6 +2,7 @@ const Discord = { Client, Intents, MessageActionRow, MessageButton } = require('
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES] });
 const fs = require('fs');
 const men = require('./men.json');
+const mongoose = require('mongoose');
 
 
 client.on('guildMemberAdd', guildMember =>{
@@ -46,6 +47,15 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
+mongoose.connect(process.env.MONGODB_SRV, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(() =>{
+    console.log('Connected to MongoDB');
+}).catch((err) =>{
+    console.log(err);
+});
 
 client.on('message', async message => {
     if(message.author.bot) return;
