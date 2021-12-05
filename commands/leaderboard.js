@@ -37,7 +37,7 @@ module.exports = {
             let pos = 0
             for( let obj of members) {
                 pos++
-                if(obj.userID == member.user.id) {
+                if(obj.userID == message.member.user.id) {
                     Lead.setFooter(`You're No.${pos} in the Leaderboard`)
                 }
             }
