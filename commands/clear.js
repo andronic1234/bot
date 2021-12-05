@@ -3,7 +3,7 @@ module.exports = {
     description: "Clear Messages",
     
     async execute(client, message, cmd, args, Discord) {
-        if (!message.member.permissions.has("ADMINISTRATOR")) {
+        if (!message.member.permissions.has("MANAGE_MESSAGES")) {
             return message.reply('You don\'t have the permission for that');
         } else
         if (cmd === 'clear'){
