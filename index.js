@@ -58,11 +58,10 @@ const profileModel = require('./models/profileSchema');
 client.on('message', async message => {
     if(message.author.bot) return;
     let messagearray = message.content.split(' ');
-    let profileData = await profileModel.findOne({ userID: message.author.id });
-    let add = profileData.men;
+    let add = 0;
     for(var i = 0; i<messagearray.length; i++){
         if(messagearray[i] === 'men'){
-            add + 1;
+            add++;
        }
     }
         const rewrite = await profileModel.findOneAndUpdate({
