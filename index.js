@@ -55,7 +55,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
     console.log(err);
 });
 const profileModel = require('./models/profileSchema');
-client.on('message', async message => {
+client.on('message', async (message, profileData) => {
     if(message.author.bot) return;
     let messagearray = message.content.split(' ');
     
