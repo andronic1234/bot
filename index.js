@@ -1,7 +1,6 @@
 const Discord = { Client, Intents, MessageActionRow, MessageButton } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES] });
 const fs = require('fs');
-const men = require('./men.json');
 const mongoose = require('mongoose');
 
 
@@ -56,10 +55,23 @@ mongoose.connect(process.env.MONGODB_SRV, {
     console.log(err);
 });
 
-// client.on('message', async message => {
-//     if(message.author.bot) return;
-//     let messagearray = message.content.split(' ');
-
+client.on('message', async message => {
+    if(message.author.bot) return;
+    let messagearray = message.content.split(' ');
+    
+    let add = profileData.men;
+    for(var i = 0; i<messagearray.length; i++){
+        if(messagearray[i] === 'men'){
+            add + 1;
+       }
+    }
+        const men = await profileModel.findOneAndUpdate({
+            userID: message.author.id,
+        }, {
+            $inc: {
+                men: add,
+            }
+        });
 
 //     if(!men[message.author.id]){
 //         men[message.author.id] = {
@@ -78,6 +90,6 @@ mongoose.connect(process.env.MONGODB_SRV, {
 //     fs.writeFile("./men.json", JSON.stringify(json), (err) => {
 //         if(err) console.log(err)
 //     })
-// });
+ });
 
 client.login(process.env.DJS_TOKEN);
