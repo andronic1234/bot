@@ -47,7 +47,7 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
-mongoose.connect(process.env.MONGODB_SRV, {
+mongoose.connect(`${process.env.MONGODB_SRV}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
