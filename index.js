@@ -73,7 +73,14 @@ client.on('message', async message => {
                 men: add,
             }
         });
-
+        if(!rewrite){
+            let profile = await profileModel.create({
+                userID: message.author.id,
+                serverID: message.guild.id,
+                men: 0,
+            });
+            profile.save();
+        }
  });
 
 client.login(process.env.DJS_TOKEN);
