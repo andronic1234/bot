@@ -19,14 +19,14 @@ module.exports = async (Discord, client, message) => {
         console.log(err)
     }
 
-    let profileBoard;
-    try{
-        profileBoard = await profileModel.find({});
+    // let profileBoard;
+    // try{
+    //     profileBoard = await profileModel.find({});
 
 
-    }catch(err){
-        console.log(err)
-    }
+    // }catch(err){
+    //     console.log(err)
+    // }
 
 
     const args = message.content.slice(prefix.length).split(/ +/);

@@ -1,3 +1,4 @@
+const profileModel = require('../models/profileSchema');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -5,10 +6,14 @@ module.exports = {
     description: "Men Leaderboard",
     aliases: ['rank', 'lb', 'lead', 'ranks'],
     
-    async execute(client, message, cmd, args, Discord, profileBoard) {
+    async execute(client, message, cmd, args, Discord, ) {
             if(cmd === 'leaderboard'){
             message.delete(200);
-            if(!profileBoard) return;
+            try{
+            let profileBoard = await profileModel.find({});
+        
+        
+
             const members = []
 
             for (let obj of profileBoard) {
@@ -51,7 +56,9 @@ module.exports = {
             Lead.setDescription(desc)
 
             message.channel.send({ embeds: [Lead] });
+            }catch(err){
+            console.log(err)
+            }
         }
-
     }
 }
