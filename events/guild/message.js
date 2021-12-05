@@ -21,7 +21,8 @@ module.exports = async (Discord, client, message) => {
 
     let profileBoard;
     try{
-        profileBoard = await profileModel.findOne({ userID: message.author.id });
+        profileBoard = await profileModel.find({});
+
 
     }catch(err){
         console.log(err)

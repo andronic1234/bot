@@ -9,13 +9,49 @@ module.exports = {
             if(cmd === 'leaderboard'){
             message.delete(200);
             if(!profileBoard) return;
+            const members = []
+
+            for (let obj of profileBoard) {
+                if(message.guild.members.cache
+                .map((member) => member.id)
+                .includes(obj.userID)) members.push(obj)
+            }
+    
             const Lead = new MessageEmbed()
             .setColor('DARK_GREEN')
             .setThumbnail("https://cdn.discordapp.com/attachments/755482197150007448/912481617950437437/GoDSlayeRLogoLOW2.png")
             .setTitle('The Men Leaderboard')
-            .setFooter(`${profileBoard}`)
             .setTimestamp()
+
+            members = members.sort(function (b, a) {
+                return a.men - b.men
+            })
+
+            members = members.filter(function BigEnough(value) {
+                return value.men > 0
+            })
+
+            let pos = 0
+            for( let obj of members) {
+                pos++
+                if(obj.userID == member.user.id) {
+                    Lead.setFooter(`You're No.${pos} in the Leaderboard`)
+                }
+            }
+
+            members = members.slice(0, 10)
+            let desc = ""
+            for(let i = 0; i < members.length; i++) {
+                let user = client.users.cache.get(members[i].userID)
+                if(!user) return
+                let val = members[i].men
+                desc += `${i +1}. ${user.tag} - ${val}\n`
+            }
+
+            Lead.setDescription(desc)
+
             message.channel.send({ embeds: [Lead] });
         }
+
     }
 }
