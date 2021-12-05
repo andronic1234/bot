@@ -11,10 +11,8 @@ module.exports = {
             message.delete(200);
             try{
             let profileBoard = await profileModel.find({});
-        
-        
-
-            const members = []
+            
+            let members = []
 
             for (let obj of profileBoard) {
                 if(message.guild.members.cache
