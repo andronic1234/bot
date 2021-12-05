@@ -1,6 +1,6 @@
 module.exports = {
     name: 'men',
-    description: "Bot Ping",
+    description: "Men Counter",
     
     async execute(client, message, cmd, args, Discord, profileData) {
             if(cmd === 'men'){

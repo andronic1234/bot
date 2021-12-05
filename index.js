@@ -54,6 +54,8 @@ mongoose.connect(process.env.MONGODB_SRV, {
 }).catch((err) =>{
     console.log(err);
 });
+
+
 const profileModel = require('./models/profileSchema');
 client.on('message', async message => {
     if(message.author.bot) return;

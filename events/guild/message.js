@@ -19,6 +19,15 @@ module.exports = async (Discord, client, message) => {
         console.log(err)
     }
 
+    let profileBoard;
+    try{
+        profileBoard = await profileModel.findOne({ userID: message.author.id });
+
+    }catch(err){
+        console.log(err)
+    }
+
+
     const args = message.content.slice(prefix.length).split(/ +/);
     const cmd = args.shift().toLowerCase();
 
