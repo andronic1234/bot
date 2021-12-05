@@ -38,7 +38,7 @@ module.exports = {
             for( let obj of members) {
                 pos++
                 if(obj.userID == message.member.user.id) {
-                    Lead.setFooter(`You're No.${pos} in the Leaderboard`)
+                    Lead.setFooter(`You're **No.${pos}** in the Leaderboard`)
                 }
             }
 
@@ -48,7 +48,7 @@ module.exports = {
                 let user = client.users.cache.get(members[i].userID)
                 if(!user) return
                 let val = members[i].men
-                desc += `${i +1}. ${user.tag} - ${val}\n`
+                desc += `**${i +1}.** __${user.tag}__ - **${val}**\n`
             }
 
             Lead.setDescription(desc)
