@@ -57,28 +57,28 @@ mongoose.connect(process.env.MONGODB_SRV, {
     console.log(err);
 });
 
-client.on('message', async message => {
-    if(message.author.bot) return;
-    let messagearray = message.content.split(' ');
+// client.on('message', async message => {
+//     if(message.author.bot) return;
+//     let messagearray = message.content.split(' ');
 
 
-    if(!men[message.author.id]){
-        men[message.author.id] = {
-            count: 0
-        };
-    }
+//     if(!men[message.author.id]){
+//         men[message.author.id] = {
+//             count: 0
+//         };
+//     }
 
    
-    for(var i = 0; i<messagearray.length; i++){
-        let deez = men[message.author.id].count;
-        if(messagearray[i] === 'men'){
-            men[message.author.id].count = deez + 1;
-        }
-    }
-    let json = require('./men.json');
-    fs.writeFile("./men.json", JSON.stringify(json), (err) => {
-        if(err) console.log(err)
-    })
-});
+//     for(var i = 0; i<messagearray.length; i++){
+//         let deez = men[message.author.id].count;
+//         if(messagearray[i] === 'men'){
+//             men[message.author.id].count = deez + 1;
+//         }
+//     }
+//     let json = require('./men.json');
+//     fs.writeFile("./men.json", JSON.stringify(json), (err) => {
+//         if(err) console.log(err)
+//     })
+// });
 
 client.login(process.env.DJS_TOKEN);
