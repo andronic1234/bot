@@ -55,12 +55,11 @@ mongoose.connect(process.env.MONGODB_SRV, {
     console.log(err);
 });
 const profileModel = require('./models/profileSchema');
-const data = require('./events/guild/message'(profileData));
 client.on('message', async message => {
     if(message.author.bot) return;
     let messagearray = message.content.split(' ');
-    
-    let add = data.men;
+    let profileData = await profileModel.findOne({ userID: message.author.id });
+    let add = profileData.men;
     for(var i = 0; i<messagearray.length; i++){
         if(messagearray[i] === 'men'){
             add + 1;
