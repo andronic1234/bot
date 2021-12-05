@@ -72,23 +72,6 @@ client.on('message', async message => {
             }
         });
 
-//     if(!men[message.author.id]){
-//         men[message.author.id] = {
-//             count: 0
-//         };
-//     }
-
-   
-//     for(var i = 0; i<messagearray.length; i++){
-//         let deez = men[message.author.id].count;
-//         if(messagearray[i] === 'men'){
-//             men[message.author.id].count = deez + 1;
-//         }
-//     }
-//     let json = require('./men.json');
-//     fs.writeFile("./men.json", JSON.stringify(json), (err) => {
-//         if(err) console.log(err)
-//     })
  });
 
 client.login(process.env.DJS_TOKEN);

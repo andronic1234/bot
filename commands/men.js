@@ -3,7 +3,6 @@ module.exports = {
     description: "Bot Ping",
     
     async execute(client, message, cmd, args, Discord, profileData) {
-        // const men = require('../men.json');
             if(cmd === 'men'){
             message.delete(200);
             if(!profileData) return;
