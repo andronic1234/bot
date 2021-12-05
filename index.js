@@ -54,7 +54,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
 }).catch((err) =>{
     console.log(err);
 });
-
+const profileModel = require('./models/profileSchema');
 client.on('message', async message => {
     if(message.author.bot) return;
     let messagearray = message.content.split(' ');
@@ -65,7 +65,7 @@ client.on('message', async message => {
             add + 1;
        }
     }
-        const men = await profileModel.findOneAndUpdate({
+        const rewrite = await profileModel.findOneAndUpdate({
             userID: message.author.id,
         }, {
             $inc: {
