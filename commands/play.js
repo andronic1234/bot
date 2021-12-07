@@ -144,6 +144,7 @@ const video_player = async (message, connection, adding, nextSong) => {
     });
 
     stream.on('error', (err) => {
+        if(!stream) return;
         message.channel.send("There was an error, check if everything is still working!");
         return console.log(
             `An unexpected error has occurred.\nPossible type \`${err}\``,
