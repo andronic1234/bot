@@ -45,7 +45,7 @@ module.exports = {
             members = members.slice(0, 10)
             let desc = ""
             for(let i = 0; i < members.length; i++) {
-                let user = client.guild.members.cache.get(members[i].userID)
+                let user = client.users.cache.get(members[i].userID)
                 if(!user) return
                 let val = members[i].men
                 desc += `**${i +1}.** __${user.tag}__ - ${val}\n`
