@@ -15,7 +15,7 @@ module.exports = {
             let members = []
 
             for (let obj of profileBoard) {
-                const Guild = client.guilds.get(message.guild.id);
+                let Guild = client.guilds.get(message.guild.id).id;
                 if(Guild.members.cache
                 .map((member) => member.id)
                 .includes(obj.userID)) members.push(obj)
