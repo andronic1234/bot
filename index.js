@@ -9,20 +9,17 @@ client.on('guildMemberAdd', guildMember =>{
     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'MEN');
  
     guildMember.roles.add(welcomeRole);
-    guildMember.guild.channels.cache.get('788800600968003647').send(`Welcome <@${guildMember.user.id}> to the gay`)
+    guildMember.guild.channels.cache.get('788800600968003647').send(`Welcome <@${guildMember.user.id}> to the server`)
 });
 
 
 const activities_list = [
-    "with Anime Tiddies", 
-    "Roblox",
-    "Minecraft", 
-    "with ur mom",
+    "with his own code!", 
+    "Ping Pong",
+    "a Game", 
+    "with cats",
     "with a rock",
-    "with GoDSlayeR",
-    "Amogus",
-    "Muck",
-    "with Andronic's cat he's very cute btw"
+    "with GoDSlayeR"
     ];
 
 client.on('ready', () => {

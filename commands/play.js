@@ -36,7 +36,7 @@ module.exports = {
         const guildID = message.guild.id;
         const voiceChannel = message.member.voice.channel;
 
-        if (!voiceChannel) return message.channel.send('Ur not in **joice** channel noob');
+        if (!voiceChannel) return message.channel.send('Ur not in a **voice** channel.');
         
         if (cmd === 'play'){
             message.delete(200);
@@ -56,7 +56,7 @@ module.exports = {
                 });
                 video_player(message, connection, true, false);
             } catch (err) {
-                message.channel.send('Men i cant connect frick');
+                message.channel.send('I cannot connect to the voice channel');
                 throw err;
             }
             clearTimeout(timeout);
@@ -69,7 +69,7 @@ module.exports = {
         else if(cmd === 'remove') remove_song(message, args);
         else if(cmd === 'queue') manifest_queue(message, args);
         else if(cmd === 'shuffle') shuffle_queue(message, connection);
-        else if(cmd === 'loop') {looping = !looping; message.channel.send(looping ? "Queue will now loop." : "Queue will stop looping loops.");};
+        else if(cmd === 'loop') {looping = !looping; message.channel.send(looping ? "Queue will now loop." : "Queue will stop looping.");};
         
         console.log(queue, "Queue after full command (72)");
     }
@@ -103,7 +103,7 @@ const video_player = async (message, connection, adding, nextSong) => {
                 queue[queue.indexOf(message.guild.id)+1].push(list.videos[i].title);
                 song.url == " " ? song = { title: list.videos[i].title, url: `https://www.youtube.com/watch?v=${list.videos[i].thumbnail.substr(23, 11)}` } : song.url;
                 if (i == 79) {
-                    message.channel.send('Limit-breaker (max 80 songs per playlist, added the first 80, sorry bro(nii-chan))!');
+                    message.channel.send('Limit-breaker (max 80 songs per playlist, added the first 80)!');
                 }
             }
             isList = true;
@@ -173,7 +173,7 @@ const pop_song = (message) => {
 const skip_song = (message, connection) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
     if (queue[queue.indexOf(message.guild.id)] == -1) {
-        return message.channel.send(`There are no songs in queue 😔`);
+        return message.channel.send(`There are no songs in queue`);
     }
     pop_song(message);
     console.log(queue, "Queue after skipping (175)");
@@ -252,7 +252,6 @@ const manifest_queue = async (message, args, queuePage, queueMessage) => {
         const queue_embed = new MessageEmbed()
         .setColor('DARK_GREEN')
         .setAuthor(message.guild.name, message.author.avatarURL())
-        .setThumbnail("https://cdn.discordapp.com/attachments/755482197150007448/912481617950437437/GoDSlayeRLogoLOW2.png")
         .setTitle('Song queue')
         .setTimestamp()
         .setFooter(`page ${queuePage}`);
@@ -314,11 +313,11 @@ const manifest_queue = async (message, args, queuePage, queueMessage) => {
                 await ButtonInteraction.deferUpdate();
                 await manifest_queue(message, args, queuePage, queueMessage);
             } catch {
-                return console.log('Men it is gay (310)');
+                return console.log('Btn (310)');
             }
         });
     }
-    else return message.channel.send(`There is no queue, noob.`);
+    else return message.channel.send(`There is no queue.`);
 }
 
 

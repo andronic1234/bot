@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['rank', 'lb', 'lead', 'ranks'],
     
     async execute(client, message, cmd, args, Discord, ) {
-            if(cmd === 'leaderboard'){
+            if(cmd === this.aliases){
             message.delete(200);
             try{
             let profileBoard = await profileModel.find({});
