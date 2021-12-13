@@ -80,4 +80,4 @@ client.on('message', async message => {
         }
  });
 
-client.login('TOKEN_HERE');
+client.login(process.env.DJS_TOKEN);
